@@ -244,78 +244,84 @@ export default function App() {
   return (
     <div style={{ minHeight: "100vh", background: BG, color: TEXT, fontFamily: "'Courier New', 'Lucida Console', monospace" }}>
 
-      {/* ── TOP STATUS BAR (Bloomberg top strip) ───────────────────────────── */}
-      <div style={{
-        background: Y, color: "#000",
-        padding: "3px 16px",
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        fontSize: 10, fontWeight: 700, letterSpacing: 2,
-      }}>
-        <span>SUMM3R AI INDEX  ◈  INTELLIGENCE DATABASE  ◈  LIVE</span>
-        <span>{dateStr}  {timeStr}</span>
-      </div>
 
-      {/* ── MAIN HEADER ────────────────────────────────────────────────────── */}
-      <header style={{
-        background: BG3,
-        borderBottom: `1px solid ${BORDER}`,
-        padding: "0 24px",
-        display: "flex", alignItems: "stretch",
-        height: 48,
-        position: "sticky", top: "25px", zIndex: 200,
-      }}>
-        {/* Logo */}
+      {/* ── STICKY HEADER WRAPPER (yellow bar + nav) ───────────────────────── */}
+      <div style={{ position: "sticky", top: 0, zIndex: 200 }}>
+
+        {/* Top status bar */}
         <div style={{
-          display: "flex", alignItems: "center", gap: 12,
-          borderRight: `1px solid ${BORDER}`, paddingRight: 20, marginRight: 4,
+          background: Y, color: "#000",
+          padding: "3px 16px",
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          fontSize: 10, fontWeight: 700, letterSpacing: 2,
         }}>
-          <div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: Y, letterSpacing: 4 }}>SUMM3R</div>
-            <div style={{ fontSize: 8, color: MUTED, letterSpacing: 3, marginTop: -2 }}>AI INDEX</div>
-          </div>
+          <span>SUMM3R AI INDEX  ◈  INTELLIGENCE DATABASE  ◈  LIVE</span>
+          <span>{dateStr}  {timeStr}</span>
         </div>
 
-        {/* Nav */}
-        <nav style={{ display: "flex", alignItems: "stretch", flex: 1 }}>
-          {NAV_ITEMS.map((item, i) => (
-            <button
-              key={item.key}
-              onClick={() => navigateTo(item.key)}
-              style={{
-                background: page === item.key ? `${Y}18` : "transparent",
-                border: "none",
-                borderBottom: page === item.key ? `2px solid ${Y}` : "2px solid transparent",
-                borderRight: `1px solid ${BORDER}`,
-                color: page === item.key ? Y : TEXT2,
-                padding: "0 18px",
-                cursor: "pointer",
-                fontSize: 10,
-                letterSpacing: 1.5,
-                fontFamily: "inherit",
-                fontWeight: page === item.key ? 700 : 400,
-                transition: "all 0.15s",
-                whiteSpace: "nowrap",
-              }}
-            >
-              <span style={{ color: MUTED, marginRight: 6, fontSize: 9 }}>{String(i).padStart(2, "0")}</span>
-              {item.label}
-            </button>
-          ))}
-        </nav>
-
-        {/* Right status */}
-        <div style={{
-          display: "flex", alignItems: "center", gap: 16,
-          borderLeft: `1px solid ${BORDER}`, paddingLeft: 16,
-          fontSize: 9, color: MUTED, letterSpacing: 1.5,
+        {/* Main nav header */}
+        <header style={{
+          background: BG3,
+          borderBottom: `1px solid ${BORDER}`,
+          padding: "0 24px",
+          display: "flex", alignItems: "stretch",
+          height: 48,
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: ACCENTS.green, boxShadow: `0 0 6px ${ACCENTS.green}`, animation: "pulse 2s infinite" }} />
-            <span style={{ color: ACCENTS.green }}>ONLINE</span>
+          {/* Logo */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: 12,
+            borderRight: `1px solid ${BORDER}`, paddingRight: 20, marginRight: 4,
+          }}>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: Y, letterSpacing: 4 }}>SUMM3R</div>
+              <div style={{ fontSize: 8, color: MUTED, letterSpacing: 3, marginTop: -2 }}>AI INDEX</div>
+            </div>
           </div>
-          <span>HKT</span>
-        </div>
-      </header>
+
+          {/* Nav */}
+          <nav style={{ display: "flex", alignItems: "stretch", flex: 1 }}>
+            {NAV_ITEMS.map((item, i) => (
+              <button
+                key={item.key}
+                onClick={() => navigateTo(item.key)}
+                style={{
+                  background: page === item.key ? `${Y}18` : "transparent",
+                  border: "none",
+                  borderBottom: page === item.key ? `2px solid ${Y}` : "2px solid transparent",
+                  borderRight: `1px solid ${BORDER}`,
+                  color: page === item.key ? Y : TEXT2,
+                  padding: "0 18px",
+                  cursor: "pointer",
+                  fontSize: 10,
+                  letterSpacing: 1.5,
+                  fontFamily: "inherit",
+                  fontWeight: page === item.key ? 700 : 400,
+                  transition: "all 0.15s",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <span style={{ color: MUTED, marginRight: 6, fontSize: 9 }}>{String(i).padStart(2, "0")}</span>
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          {/* Right status */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: 16,
+            borderLeft: `1px solid ${BORDER}`, paddingLeft: 16,
+            fontSize: 9, color: MUTED, letterSpacing: 1.5,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: ACCENTS.green, boxShadow: `0 0 6px ${ACCENTS.green}`, animation: "pulse 2s infinite" }} />
+              <span style={{ color: ACCENTS.green }}>ONLINE</span>
+            </div>
+            <span>HKT</span>
+          </div>
+        </header>
+
+      </div>{/* end sticky wrapper */}
+
 
       {/* ── PAGE CONTENT ───────────────────────────────────────────────────── */}
       <div>
@@ -1156,108 +1162,206 @@ export default function App() {
                 <div>RESOLVES</div>
               </div>
 
-              {filteredPreds.map((entry, i) => {
-                const catColor = PRED_CAT_COLORS[entry.category] || MUTED;
-                const isPoly = entry.source === "Polymarket";
-                const prob = entry.probability;
-                const probColor = prob === null ? MUTED : prob >= 70 ? ACCENTS.green : prob >= 40 ? Y : prob >= 15 ? ACCENTS.orange : ACCENTS.red;
+              {(() => {
+                const QUALITATIVE_SOURCES = ["Samotsvety", "AI Futures Project", "MIRI"];
+                const quantPreds = filteredPreds.filter(p => !QUALITATIVE_SOURCES.includes(p.source));
+                const qualPreds  = filteredPreds.filter(p => QUALITATIVE_SOURCES.includes(p.source));
 
-                return (
-                  <div key={entry.id} style={{
-                    borderBottom: `1px solid ${BORDER}`,
-                    background: i % 2 === 0 ? "transparent" : `${BG3}88`,
-                    padding: "14px",
-                    borderLeft: `2px solid ${isPoly ? ACCENTS.green : ACCENTS.blue}22`,
-                  }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 110px 130px 90px 70px", gap: 10, alignItems: "center" }}>
-                      {/* Title + source badge */}
-                      <div>
-                        <a href={entry.url} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
-                          <div style={{ fontSize: 12, fontWeight: 600, color: "#fff", marginBottom: 4, lineHeight: 1.4 }}>{entry.title}</div>
-                        </a>
-                        <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                          {(() => {
-                            const sc = SOURCE_COLORS[entry.source] || MUTED;
-                            return (
-                              <span style={{ fontSize: 8, padding: "1px 6px", letterSpacing: 1, border: `1px solid ${sc}55`, color: sc, background: `${sc}10` }}>
-                                {entry.source.toUpperCase()}
-                              </span>
-                            );
-                          })()}
-                          {entry.forecast_type && (
-                            <span style={{ fontSize: 8, padding: "1px 6px", letterSpacing: 1, border: `1px solid ${MUTED}44`, color: MUTED, background: "transparent" }}>
-                              {entry.forecast_type.toUpperCase()}
+                const renderRow = (entry, i, isQual) => {
+                  const catColor = PRED_CAT_COLORS[entry.category] || MUTED;
+                  const isPoly   = entry.source === "Polymarket";
+                  const isMeta   = entry.source === "Metaculus";
+                  const prob     = entry.probability;
+                  const isMulti  = entry.forecast_type === "Multiple Choice";
+                  const probColor = prob === null ? MUTED : prob >= 70 ? ACCENTS.green : prob >= 40 ? Y : prob >= 15 ? ACCENTS.orange : ACCENTS.red;
+                  const srcColor  = SOURCE_COLORS[entry.source] || MUTED;
+
+                  // Parse notes for multi-outcome breakdown
+                  const multiBreakdown = isMulti && entry.notes && entry.notes.startsWith("LEADING:")
+                    ? entry.notes.replace(/^LEADING:\s*/, "").split(" | ")
+                    : null;
+
+                  // Cross-layer: find related news events by tag
+                  const relatedEvents = entry.tags && entry.tags.length > 0
+                    ? news.filter(n => n.tags && entry.tags.some(t => n.tags.includes(t)))
+                    : [];
+
+                  return (
+                    <div key={entry.id} style={{
+                      borderBottom: `1px solid ${BORDER}`,
+                      background: i % 2 === 0 ? "transparent" : `${BG3}88`,
+                      padding: "14px",
+                      borderLeft: `2px solid ${isQual ? srcColor + "55" : isPoly ? ACCENTS.green + "44" : ACCENTS.blue + "22"}`,
+                    }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 110px 130px 90px 70px", gap: 10, alignItems: "start" }}>
+                        {/* Title + badges */}
+                        <div>
+                          <a href={entry.url} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
+                            <div style={{ fontSize: 12, fontWeight: 600, color: "#fff", marginBottom: 4, lineHeight: 1.4 }}>{entry.title}</div>
+                          </a>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                            <span style={{ fontSize: 8, padding: "1px 6px", letterSpacing: 1, border: `1px solid ${srcColor}55`, color: srcColor, background: `${srcColor}10` }}>
+                              {entry.source.toUpperCase()}
                             </span>
-                          )}
-                          {entry.tags && entry.tags.length > 0 && (() => {
-                            const related = news.filter(n =>
-                              n.tags && entry.tags.some(t => n.tags.includes(t))
-                            );
-                            return related.length > 0 ? (
+                            {entry.forecast_type && (
+                              <span style={{ fontSize: 8, padding: "1px 6px", letterSpacing: 1,
+                                border: `1px solid ${isQual ? srcColor + "44" : MUTED + "44"}`,
+                                color: isQual ? srcColor : MUTED, background: "transparent" }}>
+                                {entry.forecast_type.toUpperCase()}
+                              </span>
+                            )}
+                            {entry.aggregation_method && (
+                              <span style={{ fontSize: 8, padding: "1px 6px", letterSpacing: 1, border: `1px solid ${MUTED}33`, color: MUTED, background: "transparent" }}>
+                                {METHOD_LABELS[entry.aggregation_method] || entry.aggregation_method}
+                              </span>
+                            )}
+                            {relatedEvents.length > 0 && (
                               <CrossLayerBadge
                                 label="RELATED EVENTS"
-                                count={related.length}
+                                count={relatedEvents.length}
                                 color={ACCENTS.cyan}
                                 onClick={() => navigateTo("feed")}
                               />
-                            ) : null;
-                          })()}
-                          {entry.aggregation_method && (
-                            <span style={{ fontSize: 8, padding: "1px 6px", letterSpacing: 1, border: `1px solid ${MUTED}33`, color: MUTED, background: "transparent" }}>
-                              {METHOD_LABELS[entry.aggregation_method] || entry.aggregation_method}
-                            </span>
+                            )}
+                          </div>
+                          {/* Multi-outcome breakdown */}
+                          {multiBreakdown && (
+                            <div style={{ marginTop: 8, display: "flex", flexWrap: "wrap", gap: 6 }}>
+                              {multiBreakdown.map((item, idx) => (
+                                <span key={idx} style={{
+                                  fontSize: 8, padding: "2px 7px", letterSpacing: 0.5,
+                                  background: idx === 0 ? `${ACCENTS.green}18` : `${BG3}`,
+                                  border: `1px solid ${idx === 0 ? ACCENTS.green + "55" : BORDER}`,
+                                  color: idx === 0 ? ACCENTS.green : TEXT2,
+                                }}>
+                                  {idx === 0 ? "▶ " : ""}{item}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {/* Qualitative notes (non-multi) */}
+                          {isQual && !multiBreakdown && entry.notes && (
+                            <div style={{ marginTop: 6, fontSize: 9, color: TEXT2, lineHeight: 1.5, maxWidth: 480 }}>
+                              {entry.notes}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Category */}
+                        <div><Tag color={catColor}>{entry.category}</Tag></div>
+
+                        {/* Signal */}
+                        <div>
+                          {isQual ? (
+                            <div>
+                              {prob != null ? (
+                                <>
+                                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                                    <span style={{ fontSize: 15, fontWeight: 700, color: probColor, fontVariantNumeric: "tabular-nums" }}>
+                                      {(prob * (prob <= 1 ? 100 : 1)).toFixed(0)}%
+                                    </span>
+                                    <span style={{ fontSize: 8, color: srcColor, alignSelf: "flex-end" }}>EST.</span>
+                                  </div>
+                                  <div style={{ height: 3, background: `${probColor}22`, borderRadius: 1 }}>
+                                    <div style={{ height: "100%", width: `${Math.max(prob <= 1 ? prob*100 : prob, 1)}%`, background: probColor, borderRadius: 1 }} />
+                                  </div>
+                                </>
+                              ) : (
+                                <span style={{ fontSize: 9, color: srcColor, letterSpacing: 1 }}>SCENARIO</span>
+                              )}
+                            </div>
+                          ) : isPoly ? (
+                            <div>
+                              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                                <span style={{ fontSize: 15, fontWeight: 700, color: probColor, fontVariantNumeric: "tabular-nums" }}>
+                                  {prob != null ? prob + "%" : "—"}
+                                </span>
+                                <span style={{ fontSize: 8, color: MUTED, alignSelf: "flex-end" }}>{isMulti ? "LEAD" : "YES"}</span>
+                              </div>
+                              <div style={{ height: 3, background: `${probColor}22`, borderRadius: 1 }}>
+                                <div style={{ height: "100%", width: `${Math.max(prob||0,1)}%`, background: probColor, borderRadius: 1 }} />
+                              </div>
+                            </div>
+                          ) : (
+                            <div>
+                              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                                <span style={{ fontSize: 15, fontWeight: 700, color: probColor, fontVariantNumeric: "tabular-nums" }}>
+                                  {prob != null ? (prob <= 1 ? (prob*100).toFixed(0) : prob) + "%" : "—"}
+                                </span>
+                                <span style={{ fontSize: 8, color: MUTED, alignSelf: "flex-end" }}>COMM.</span>
+                              </div>
+                              <div style={{ height: 3, background: `${probColor}22`, borderRadius: 1 }}>
+                                <div style={{ height: "100%", width: `${Math.max(prob != null ? (prob <= 1 ? prob*100 : prob) : 0, 1)}%`, background: probColor, borderRadius: 1 }} />
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Volume / Forecasters */}
+                        <div>
+                          {isPoly ? (
+                            <div style={{ fontSize: 11, color: TEXT2, fontVariantNumeric: "tabular-nums" }}>
+                              ${entry.volume >= 1000000 ? (entry.volume/1000000).toFixed(1) + "M" : entry.volume >= 1000 ? (entry.volume/1000).toFixed(0) + "K" : (entry.volume || "—")}
+                            </div>
+                          ) : isMeta ? (
+                            <>
+                              <div style={{ fontSize: 12, fontWeight: 700, color: ACCENTS.blue, fontVariantNumeric: "tabular-nums", marginBottom: 2 }}>
+                                {entry.volume ? entry.volume.toLocaleString() : "—"}
+                              </div>
+                              <div style={{ fontSize: 8, color: MUTED, letterSpacing: 1 }}>FORECASTERS</div>
+                            </>
+                          ) : (
+                            <div style={{ fontSize: 9, color: MUTED, letterSpacing: 1 }}>QUALITATIVE</div>
+                          )}
+                        </div>
+
+                        {/* Resolve date */}
+                        <div style={{ fontSize: 9, color: MUTED, fontVariantNumeric: "tabular-nums" }}>
+                          {isMeta && entry.url && entry.url !== "https://www.metaculus.com/questions/" ? (
+                            <a href={entry.url} target="_blank" rel="noreferrer" style={{ fontSize: 9, color: ACCENTS.blue, textDecoration: "none", letterSpacing: 1 }}>VIEW ›</a>
+                          ) : (
+                            entry.end_date && entry.end_date !== "2200-01-01" && entry.end_date !== "2300-01-01" && entry.end_date !== "2101-06-15"
+                              ? entry.end_date.slice(0,7)
+                              : entry.end_date && entry.end_date > "2050-01-01" ? "OPEN-ENDED" : entry.end_date?.slice(0,7) || "—"
                           )}
                         </div>
                       </div>
-
-                      {/* Category */}
-                      <div><Tag color={catColor}>{entry.category}</Tag></div>
-
-                      {/* Signal — probability bar for Polymarket, forecaster count for Metaculus */}
-                      <div>
-                        {isPoly ? (
-                          <div>
-                            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                              <span style={{ fontSize: 15, fontWeight: 700, color: probColor, fontVariantNumeric: "tabular-nums" }}>
-                                {prob != null ? prob + "%" : "—"}
-                              </span>
-                              <span style={{ fontSize: 8, color: MUTED, alignSelf: "flex-end" }}>YES</span>
-                            </div>
-                            <div style={{ height: 3, background: `${probColor}22`, borderRadius: 1 }}>
-                              <div style={{ height: "100%", width: `${Math.max(prob||0,1)}%`, background: probColor, borderRadius: 1 }} />
-                            </div>
-                          </div>
-                        ) : (
-                          <div>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: ACCENTS.blue, fontVariantNumeric: "tabular-nums", marginBottom: 2 }}>
-                              {(entry.volume || 0).toLocaleString()} 
-                            </div>
-                            <div style={{ fontSize: 8, color: MUTED, letterSpacing: 1 }}>FORECASTERS</div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Volume (poly) or visit link (meta) */}
-                      <div>
-                        {isPoly ? (
-                          <div style={{ fontSize: 11, color: TEXT2, fontVariantNumeric: "tabular-nums" }}>
-                            ${entry.volume >= 1000000 ? (entry.volume/1000000).toFixed(1) + "M" : entry.volume >= 1000 ? (entry.volume/1000).toFixed(0) + "K" : entry.volume}
-                          </div>
-                        ) : (
-                          <a href={entry.url} target="_blank" rel="noreferrer" style={{ fontSize: 9, color: ACCENTS.blue, textDecoration: "none", letterSpacing: 1 }}>VIEW ›</a>
-                        )}
-                      </div>
-
-                      {/* Resolve date */}
-                      <div style={{ fontSize: 9, color: MUTED, fontVariantNumeric: "tabular-nums" }}>
-                        {entry.end_date && entry.end_date !== "2200-01-01" && entry.end_date !== "2300-01-01" && entry.end_date !== "2101-06-15"
-                          ? entry.end_date.slice(0,7)
-                          : entry.end_date && entry.end_date > "2050-01-01" ? "OPEN-ENDED" : entry.end_date?.slice(0,7) || "—"}
-                      </div>
                     </div>
-                  </div>
+                  );
+                };
+
+                return (
+                  <>
+                    {/* ── QUANTITATIVE SECTION ── */}
+                    {quantPreds.map((entry, i) => renderRow(entry, i, false))}
+
+                    {/* ── QUALITATIVE DIVIDER ── */}
+                    {qualPreds.length > 0 && (
+                      <div style={{ margin: "28px 0 0", borderTop: `1px solid ${BORDER}` }}>
+                        <div style={{ padding: "12px 0 10px", display: "flex", alignItems: "center", gap: 12 }}>
+                          <span style={{ fontSize: 8, color: ACCENTS.purple, letterSpacing: 3, fontWeight: 700 }}>QUALITATIVE FORECASTS</span>
+                          <span style={{ fontSize: 8, color: MUTED }}>— Expert aggregates & scenario models. No crowd market. Probabilities are author estimates.</span>
+                        </div>
+                        {/* Qualitative table header */}
+                        <div style={{
+                          display: "grid", gridTemplateColumns: "1fr 110px 130px 90px 70px",
+                          gap: 10, padding: "8px 14px",
+                          fontSize: 8, color: MUTED, letterSpacing: 2,
+                          borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`,
+                          background: BG3,
+                        }}>
+                          <div>QUESTION / SCENARIO</div>
+                          <div>CATEGORY</div>
+                          <div>SIGNAL</div>
+                          <div>TYPE</div>
+                          <div>HORIZON</div>
+                        </div>
+                        {qualPreds.map((entry, i) => renderRow(entry, i, true))}
+                      </div>
+                    )}
+                  </>
                 );
-              })}
+              })()}
 
               <div style={{ marginTop: 20, padding: "14px 0", borderTop: `1px solid ${BORDER}` }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -1265,7 +1369,8 @@ export default function App() {
                     <span style={{ color: ACCENTS.green }}>◈ POLYMARKET</span> — Real-money prediction market. Probabilities represent crowd consensus backed by financial stakes. Synced daily at 09:00 HKT.
                   </div>
                   <div style={{ fontSize: 9, color: MUTED, lineHeight: 1.7 }}>
-                    <span style={{ color: ACCENTS.blue }}>◈ METACULUS</span> — Expert crowd forecasting platform. Live community predictions restricted via API. Click any question to view current forecasts at metaculus.com.
+                    <span style={{ color: ACCENTS.blue }}>◈ METACULUS</span> — Expert crowd forecasting platform. Click any question to view live forecasts at metaculus.com. &nbsp;
+                    <span style={{ color: ACCENTS.purple }}>◈ SAMOTSVETY / AI FUTURES / MIRI</span> — Expert aggregates & scenario models. Qualitative section below.
                   </div>
                 </div>
               </div>
