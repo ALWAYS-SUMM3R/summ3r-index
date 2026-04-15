@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Model Release",
+        "Model Update",
+        "Research",
+        "Market",
+        "Infrastructure",
+        "Policy",
+        "Safety",
+        "Business",
+        "Partnership",
+        "M&A",
+        "Organization",
+        "Product Sunset",
+        "Framework Release",
+        "Agent Product",
+        "Industry Event",
+        "Industry Initiative",
+        "Funding/Research",
+        "Research/Breakthrough",
+        "Video/Model"
+      ]
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "published_date": {
+      "type": "string"
+    },
+    "significance": {
+      "type": "number"
+    },
+    "company": {
+      "type": "string"
+    },
+    "relevance_score": {
+      "type": "number"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "linked_prediction_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [],
+  "name": "NewsUpdate"
+}

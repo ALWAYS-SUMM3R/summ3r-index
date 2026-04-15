@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "era": {
+      "type": "string"
+    },
+    "key_figure": {
+      "type": "string"
+    },
+    "significance": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "string"
+    }
+  },
+  "required": [],
+  "name": "OriginsEntry"
+}

@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "model_name": {
+      "type": "string"
+    },
+    "benchmark": {
+      "type": "string"
+    },
+    "developer": {
+      "type": "string"
+    },
+    "rank": {
+      "type": "number"
+    },
+    "release_date": {
+      "type": "string"
+    },
+    "score": {
+      "type": "number"
+    },
+    "source_url": {
+      "type": "string"
+    }
+  },
+  "required": [],
+  "name": "ModelBenchmark"
+}

@@ -1,0 +1,90 @@
+{
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "probability": {
+      "type": "number"
+    },
+    "volume": {
+      "type": "number"
+    },
+    "end_date": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Model Race",
+        "Releases",
+        "Long-range",
+        "Market Events",
+        "Safety",
+        "Policy",
+        "Geopolitical",
+        "Existential Risk"
+      ]
+    },
+    "last_updated": {
+      "type": "string"
+    },
+    "forecast_type": {
+      "type": "string",
+      "enum": [
+        "Binary",
+        "Continuous",
+        "Multiple Choice",
+        "Scenario",
+        "Expert Aggregate"
+      ]
+    },
+    "aggregation_method": {
+      "type": "string",
+      "enum": [
+        "Crowd",
+        "Superforecaster",
+        "Expert Collective",
+        "Prediction Market",
+        "Single Expert",
+        "Model Ensemble"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Resolved Yes",
+        "Resolved No",
+        "Partially Resolved",
+        "Annulled"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "linked_event_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [],
+  "name": "Prediction"
+}

@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "properties": {
+    "milestone": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Model Release",
+        "Research",
+        "Market",
+        "Infrastructure",
+        "Policy",
+        "Safety",
+        "Business",
+        "M&A"
+      ]
+    },
+    "impact_score": {
+      "type": "number"
+    },
+    "model_company": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "year": {
+      "type": "number"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "linked_prediction_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [],
+  "name": "ModernEraEntry"
+}
